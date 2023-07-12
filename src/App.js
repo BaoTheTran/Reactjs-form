@@ -1,13 +1,11 @@
 import './App.css';
-import ShoesShop from './shoes-shop';
-
-
+import Booking from './booking-ticket';
 
 function App() {
   return (
     <>
     <div>
-      <ShoesShop/>
+      <Booking/>
     </div>
     </>
    
