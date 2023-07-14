@@ -1,7 +1,6 @@
 import data from "../data.json";
 const initialState ={
     listItem : data,
-    danhSachGhe : data.danhSachGhe,
 }
 
 const itemReducer =(state = initialState, action)=>{

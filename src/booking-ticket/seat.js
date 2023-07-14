@@ -3,30 +3,44 @@ import Item from './item';
 import { connect } from 'react-redux';
 class Seat extends Component {
   renderListItem=()=>{
-    let {listItem,danhSachGhe} = this.props;
+    let {listItem} = this.props;
+    
     return listItem.map((item)=>{
+       
         return (
-          <div key={item.hang}>
+          <tr key={item.hang} className='d-flex '>
+              <td>{item.hang}</td>
+       
               {item.danhSachGhe.map((ghe)=>{
-                return(
-                  <Item
-                  key={ghe.soGhe}
-                  ghe={ghe}                  
-                  />
-                )
+                if(!item.hang){
+                  return<Item
+                 key={ghe.soGhe}
+                 ghe={ghe}
+                 listItem = {item}
+                               
+                 />
+                }
+                else if(item.hang){
+                  return(<input type="checkbox" class="seats " value={ghe.soGhe} ></input>)
+                  
+                }
+                 
               })}
-          </div>
+          </tr>
         )
     })
   }
 
   render() {
+    let {listItem} = this.props;
+    console.log(listItem);
     return (
       <div className="seatStructure txt-center" style={{overflowX: 'auto'}}>
       <p id="notification" />
-      <table id="seatsBlock">
-        <Item/>
-      </table>
+      
+        {this.renderListItem()}
+        {/* <Item/> */}
+        
       <div className="screen">
         <h2 className="wthree">Screen this way</h2>
       </div>
@@ -40,7 +54,6 @@ const mapStateToProps = (state)=>{
   return{
     //key : listUser la props cho Component Users
     listItem : state.itemReducer.listItem,
-    danhSachGhe : state.itemReducer.danhSachGhe,
   }
 }
 
