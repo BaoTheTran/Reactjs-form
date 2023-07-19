@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { actSubmit } from '../store/actions';
+import { actSubmit ,actClear} from '../store/actions';
 
  class Form extends Component {
     constructor(props){
@@ -57,9 +57,7 @@ import { actSubmit } from '../store/actions';
                     tenSV: nextProps.studentEdit.tenSV,
                     phoneSV: nextProps.studentEdit.phoneSV,
                     emailSV: nextProps.studentEdit.emailSV,
-                },
-                formValid : true,
-                
+                },               
             })
         }
     }
@@ -162,12 +160,10 @@ import { actSubmit } from '../store/actions';
             />
             {error.emailSV && (<div className='text-danger'>{error.emailSV}</div>)}
           </div>
-          <button className='btn btn-success'
+          {this.props.studentEdit? (<button className='btn btn-info'        
+          >Sửa sinh viên</button>) : (<button className='btn btn-success'        
           disabled = {!this.state.formValid}
-          >Thêm sinh viên</button>
-          {/* <button className='btn btn-warning'
-          onClick={()=>{this.props.clearForm()}}
-          >Clear form</button> */}
+          >Thêm sinh viên</button>)}
         </form>
       </div>
     )
@@ -177,6 +173,7 @@ import { actSubmit } from '../store/actions';
 const mapDispatchToProps =(dispatch)=>{
     return{
         addStudent :(student)=>dispatch(actSubmit(student)),
+        clearForm: ()=>dispatch(actClear())
     }
   }
 

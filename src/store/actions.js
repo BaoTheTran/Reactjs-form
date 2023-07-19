@@ -31,4 +31,11 @@ const actSearch =(keyword)=>{
     }
 };
 
-export {actSubmit,actDelete,actEdit,actSearch};
+const actClear=()=>{
+    return{
+        type: EDIT,
+        payload: null,
+    }
+}
+
+export {actSubmit,actDelete,actEdit,actSearch,actClear};
