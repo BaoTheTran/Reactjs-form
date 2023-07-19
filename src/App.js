@@ -1,11 +1,11 @@
 import './App.css';
-import Booking from './booking-ticket';
+import QLSV from './form-valid';
 
 function App() {
-  return (
+  return (  
     <>
     <div>
-      <Booking/>
+      <QLSV/>
     </div>
     </>
    
